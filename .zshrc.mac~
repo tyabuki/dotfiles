@@ -1,0 +1,6 @@
+
+# brewのバイナリを優先する
+PATH=/usr/local/bin:$PATH
+
+# python snack用（無いとbyobu-configがこける）
+PYTHONPATH=/usr/local/lib/python2.7/site-packages

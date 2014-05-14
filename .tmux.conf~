@@ -1,0 +1,39 @@
+# 環境依存の設定は、.tmux.conf.localや.tmux.conf.macへ
+# Manual http://www.openbsd.org/cgi-bin/man.cgi?query=tmux
+
+### default shell
+set-option -g default-shell /bin/zsh
+set-option -g default-command /bin/zsh
+
+### charset
+set-window-option -g utf8 on
+set-option -g status-utf8 on
+
+### Prefix key
+unbind-key C-b # C-bはどう考えてもカーソルの左移動
+set-option -g prefix C-t
+bind-key C-t send-prefix
+
+### emacsバインド
+set-option -g status-keys emacs;
+set-window-option -g mode-keys emacs;
+
+### 環境系
+set-option -g buffer-limit 10000
+set-option -g exit-unattached off # アタッチ数が0になっても終了しない
+
+
+### window系
+set-window-option -g mode-mouse on # マウスでのスクロール
+set-window-option -g aggressive-resize on # サイズの小さい端末からアクセスした時随時変更
+set-window-option -g allow-rename on # window nameの変更許可
+set-window-option -g automatic-rename on # window nameを自動で変更
+set-window-option -g monitor-activity on
+
+
+
+### 環境依存設定の読み込み
+# ローカル設定
+if-shell "[ -f ~/.tmux.conf.local ]" "source-file ~/.tmux.conf.local"
+# mac用
+if-shell "[ -f ~/.tmux.conf.mac ]" "source-file ~/.tmux.conf.mac"
