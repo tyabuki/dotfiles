@@ -68,8 +68,15 @@ esac
 
 ### mkdirのあとにcdを自動で実行
 function mkdir(){
-    command mkdir -p $1
-    builtin cd $1
+    if [ ! -n "$1" ]; then
+	echo "Enter a directory name."
+    elif [ -d $1 ]; then
+	echo "'$1' already exists! cd into the directory."
+	builtin cd $1
+    else
+	command mkdir -p $1
+	builtin cd $1
+    fi
 }
 
 ### cdのあとにlsを自動で実行
