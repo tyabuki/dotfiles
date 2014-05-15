@@ -117,6 +117,10 @@ esac
 
 
 ### 環境依存設定の読み込み
+# git用設定
+if [ -f ~/.zshrc.g ]; then
+    source ~/.zshrc.g
+fi
 # ローカル設定
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
