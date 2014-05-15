@@ -66,9 +66,16 @@ linux*)
   ;;
 esac
 
+### mkdirのあとにcdを自動で実行
+function mkdir(){
+    command mkdir -p $1
+    builtin cd $1
+}
+
 ### cdのあとにlsを自動で実行
 function cd(){
-    builtin cd $@ && ls
+    builtin cd $@
+    ls
 }
 
 ### ターミナルのタイトルに実行中のコマンド名を出力
