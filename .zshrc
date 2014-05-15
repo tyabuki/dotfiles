@@ -91,7 +91,7 @@ esac
 case ${UID} in
 # root
 0)
-    PROMPT="%B[%F{1}%n@%m%f]%#%b "
+    PROMPT="%B[%F{1}%n@%M%f]%#%b "
     RPROMPT="%~"
     ;;
 # 一般ユーザ
