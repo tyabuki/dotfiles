@@ -1,4 +1,5 @@
 ### git用の設定
+# 使うか使わないかは，ホームディレクトリにsym-linkを張るかどうか
 
 source ~/dotfiles/.zsh/git-prompt.sh
 setopt prompt_subst # プロンプト内で変数を展開
