@@ -1,21 +1,40 @@
 # 環境固有の設定は，.zsh.localとか.zsh.macに書く．
 
-### ここから
-autoload -Uz compinit; compinit # 補完有効
-#autoload -Uz predict-on; predict-on # 先行補完を有効
+### 基本設定
 autoload -U colors; colors # カラー表示を有効
 export LANG=ja_JP.UTF-8
 ulimit -u unlimited # 1ユーザあたりのプロセス数上限
 
-### key bindの設定(Emacs)
+### key bind(Emacs)
 export EDITOR=emacs
 export SVN_EDITOR=emacs
 bindkey -e
 
-### その他設定
+### プロンプトの指定
+case ${UID} in
+# root
+0)
+    PROMPT="%B[%F{1}%n@%M%f]%#%b "
+    RPROMPT="%~"
+    ;;
+# 一般ユーザ
+*)
+    PROMPT="%B[%F{2}%n@%M%f]%#%b "
+    RPROMPT="%~"
+    ;;
+esac 
+
+### 補完関連
+# git用補完とRPROMPT
+if [ -f ~/.zshrc.g ]; then
+    source ~/.zshrc.g
+fi
+autoload -Uz compinit; compinit # 補完有効
+#autoload -Uz predict-on; predict-on # 先行補完を有効
 setopt correct # スペルミスの訂正を行う
-setopt notify # background jobの状態報告を即座に行う
-setopt rm_star_wait # 特定の対象へのrm実行前に10秒待ち，その後確認する
+setopt list_packed # compact viewを有効
+setopt no_beep # beepを鳴らさない
+setopt nolistbeep # beepを鳴らさない
 
 ### history
 HISTFILE=~/.zsh_history
@@ -39,19 +58,6 @@ zshaddhistory(){ # その他除外するコマンドの指定(ls,cd,rm,man系)
     ]]
 }
 
-
-### auto cd & auto pushd(cd -[tab])
-#setopt auto_cd # ディレクトリ名で勝手にcd
-setopt auto_pushd # 自動でpushd
-DIRSTACKSIZE=100
-setopt pushd_ignore_dups # 同一ディレクトリは古い方を削除する
-setopt pushd_to_home # 引数を省略した場合は$HOMEへ移動
-
-### 補完関連
-setopt list_packed # compact viewを有効
-setopt no_beep # beepを鳴らさない
-setopt nolistbeep # beepを鳴らさない
-
 ### lsのエイリアス（linuxとBSD系でオプションが違う）
 case "${OSTYPE}" in
 darwin*)
@@ -66,6 +72,18 @@ linux*)
   ;;
 esac
 
+### cd / auto pushd関連
+#setopt auto_cd # ディレクトリ名で勝手にcd
+setopt auto_pushd # 自動でpushd(cd -[tab])
+DIRSTACKSIZE=100
+setopt pushd_ignore_dups # 同一ディレクトリは古い方を削除する
+setopt pushd_to_home # 引数を省略した場合は$HOMEへ移動
+# cdのあとにlsを自動で実行
+function cd(){
+    builtin cd $@
+    ls
+}
+
 ### mkdirのあとにcdを自動で実行
 function mkdir(){
     if [ ! -n "$1" ]; then
@@ -79,11 +97,9 @@ function mkdir(){
     fi
 }
 
-### cdのあとにlsを自動で実行
-function cd(){
-    builtin cd $@
-    ls
-}
+### その他設定
+setopt notify # background jobの状態報告を即座に行う
+setopt rm_star_wait # 特定の対象へのrm実行前に10秒待ち，その後確認する
 
 ### ターミナルのタイトルに実行中のコマンド名を出力
 # よく分からないのでそのうち直す
@@ -101,26 +117,7 @@ kterm*|*xterm*|(dt|k|E)term)
     ;;
 esac 
 
-### プロンプトの指定
-case ${UID} in
-# root
-0)
-    PROMPT="%B[%F{1}%n@%M%f]%#%b "
-    RPROMPT="%~"
-    ;;
-# 一般ユーザ
-*)
-    PROMPT="%B[%F{2}%n@%M%f]%#%b "
-    RPROMPT="%~"
-    ;;
-esac 
-
-
 ### 環境依存設定の読み込み
-# git用設定
-if [ -f ~/.zshrc.g ]; then
-    source ~/.zshrc.g
-fi
 # ローカル設定
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
@@ -129,7 +126,6 @@ fi
 if [ -f ~/.zshrc.mac ]; then
     source ~/.zshrc.mac
 fi
-
 
 #################################################
 # プロンプト表示フォーマットのメモ
