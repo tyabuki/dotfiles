@@ -21,7 +21,7 @@
 
 status表示はリポジトリにファイルが一杯あると重い．
 
-**promptにbranchやrepositoryの状態を表示や，branch名の補完関連は，該当wiki（[git_ps1](git_ps1)，[git completion](git-completion)）をそれぞれ参照．
+**promptにbranchやrepositoryの状態を表示や，branch名の補完関連は，該当wiki（[git_ps1](git_ps1)，[git completion](git-completion)）をそれぞれ参照．**
 
 ### corp用設定について
 個人用GitLab(yabuuuuu.mydns.jp)にはpushしない．
