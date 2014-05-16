@@ -18,5 +18,5 @@ precmd(){
 }
 
 ### git用の補完設定
-zstyle ':completion:*:*:git:*' script ~/dotfiles/.zsh/.git-completion.sh
+zstyle ':completion:*:*:git:*' script ~/dotfiles/.zsh/.git-completion.bash
 fpath=(~/dotfiles/.zsh $fpath)
