@@ -1,0 +1,5 @@
+
+### brewのzshを優先
+set-option -g default-shell /usr/local/bin/zsh
+set-option -g default-command /usr/local/bin/zsh
+
