@@ -4,9 +4,6 @@
 [submodule "solarized"]
 	path = solarized
 	url = https://github.com/altercation/solarized.git
-[submodule "solarized-emacs"]
-	path = solarized-emacs
-	url = https://github.com/bbatsov/solarized-emacs.git
 [submodule ".emacs.d/solarized-emacs"]
 	path = .emacs.d/solarized-emacs
 	url = https://github.com/bbatsov/solarized-emacs.git
