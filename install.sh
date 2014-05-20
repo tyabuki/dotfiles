@@ -1,6 +1,7 @@
 
 ## zsh
 ln -siv ~/dotfiles/.zshrc ~/.zshrc
+ln -siv ~/dotfiles/.zshrc.g ~/.zshrc.g
 
 ## bash
 #ln -siv ~/dotfiles/.bash_profile ~/.bash_profile
