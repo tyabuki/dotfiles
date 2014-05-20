@@ -1,17 +1,11 @@
-<<<<<<< HEAD
 ### originに関して
 * ここ→[http://yabuuuuu.mydns.jp/yabuuuuu/dotfiles](http://yabuuuuu.mydns.jp/yabuuuuu/dotfiles)
  - **特に[wiki](http://yabuuuuu.mydns.jp/yabuuuuu/dotfiles/wikis/home)**
 
-### まだやってない
-* emacs用設定書き直し中．23/24対応．
-* `.screenrc` screenをもう使わないので放置．
-=======
 ### 途中 or まだやってない
 * emacs用設定書き直し中．23/24対応したい．
  - Terminal版とCocoa版とX-Window版で微妙に動いたり動かなかったりする．
 * `.screenrc` screenをほとんど使わないので放置．
->>>>>>> e34339e10022b073b55556caeec1a9caff873d44
 * `.bashrc` ほとんど使わないが，とりあえずroot以外のプロンプトのみ設定．
 * `install.sh`は結構適当．
 
@@ -47,10 +41,6 @@ status表示はリポジトリにファイルが一杯あると重い．
  - [solarized-emacs](https://github.com/bbatsov/solarized-emacs) （未使用）
  - [emacs-color-theme-solarized](https://github.com/sellout/emacs-color-theme-solarized)
 
-<<<<<<< HEAD
-更新は個人用から頑張ってマージする．corp専用設定以外はcorpリポジトリに加えない（単方向のため）
-=======
 ### corp用設定について
 * 個人用GitLab(yabuuuuu.mydns.jp)にはpushしない．
  - 個人用からマージして一方的に更新．従ってcorp専用設定以外はcorpリポジトリに加えない．
->>>>>>> e34339e10022b073b55556caeec1a9caff873d44
