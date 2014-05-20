@@ -7,3 +7,7 @@
 [submodule ".emacs.d/solarized-emacs"]
 	path = .emacs.d/solarized-emacs
 	url = https://github.com/bbatsov/solarized-emacs.git
+[submodule ".emacs.d/markdown-mode"]
+	path = .emacs.d/markdown-mode
+	url = git://jblevins.org/git/markdown-mode.git
+	branch = stable
