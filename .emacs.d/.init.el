@@ -86,3 +86,5 @@
 (fset 'yes-or-no-p 'y-or-n-p) ; yes or noをy or n
 
 
+;;; load markdown-mode
+(load (expand-file-name (concat (getenv "HOME") "/.emacs.d/elisp/md.el")))

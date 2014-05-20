@@ -1,10 +1,19 @@
 ;;; Markdown mode
 (add-to-load-path "markdown-mode")
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+
+; markdown-modeで開くファイルの指定
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
+; Markdownファイルのプレビュー
+; C-c C-c mでバッファにプレビュ　C-c C-c pでブラウザでプレビュー
+; C-c C-c eでhtmlに変換して保存
+;(setq markdown-command "/usr/local/bin/markdown")
+(setq markdown-command "perl ~/dotfiles/.emacs.d/Markdown_1.0.1/Markdown.pl")
+
 ;;; Markdownの見出し検索
+; C-c C-s
 (defun markdown-header-list ()
   "Show Markdown Formed Header list through temporary buffer."
   (interactive)

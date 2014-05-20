@@ -1,3 +1,7 @@
+### originに関して
+* ここ→[http://yabuuuuu.mydns.jp/yabuuuuu/dotfiles](http://yabuuuuu.mydns.jp/yabuuuuu/dotfiles)
+ - **特に[wiki](http://yabuuuuu.mydns.jp/yabuuuuu/dotfiles/wikis/home)**
+
 ### まだやってない
 * emacs用設定書き直し中．23/24対応．
 * `.screenrc` screenをもう使わないので放置．
