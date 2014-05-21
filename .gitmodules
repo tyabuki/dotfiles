@@ -11,3 +11,6 @@
 	path = .emacs.d/markdown-mode
 	url = git://jblevins.org/git/markdown-mode.git
 	branch = stable
+[submodule ".emacs.d/helm"]
+	path = .emacs.d/helm
+	url = https://github.com/emacs-helm/helm.git

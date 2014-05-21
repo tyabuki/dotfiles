@@ -85,6 +85,15 @@
 (setq mouse-drag-copy-region t) ; マウス選択で直ちにコピー．23まではdefault，24からnil．
 (fset 'yes-or-no-p 'y-or-n-p) ; yes or noをy or n
 
+;;; helm
+(add-to-list 'load-path ".emacs.d/helm")
+(require 'helm-config)
+
+;;; undo-tree
+(require 'undo-tree)
+(global-undo-tree-mode t)
 
 ;;; load markdown-mode
 (load (expand-file-name (concat (getenv "HOME") "/.emacs.d/elisp/md.el")))
+
+
