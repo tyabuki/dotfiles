@@ -15,38 +15,15 @@
 (add-to-load-path "elisp")
 
 
-;;; 表示関連
-; Solarizedテーマの適用
-;(add-to-list 'custom-theme-load-path "~/.emacs.d/solarized-emacs")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
-(load-theme 'solarized-dark t) ; または(load-theme 'solarized-light t)
-
-;; フォントの指定（Solarizedテーマ適用時にcocoa版でコメントが豆腐化するのを防止）
-; ！！フォント指定は改めて調整中！！（これがあるとTerminal版で動かない）
-;(when (x-list-fonts "Ricty")
-;  (let* ((size 14)
-;         (asciifont "Ricty")
-;         (jpfont "Ricty")
-;         (h (* size 10))
-;         (fontspec)
-;         (jp-fontspec))
-;    (set-face-attribute 'default nil :family asciifont :height h)
-;    (setq fontspec (font-spec :family asciifont))
-;    (setq jp-fontspec (font-spec :family jpfont))
-;    (set-fontset-font nil 'japanese-jisx0208 jp-fontspec)
-;    (set-fontset-font nil 'japanese-jisx0212 jp-fontspec)
-;    (set-fontset-font nil 'japanese-jisx0213-1 jp-fontspec)
-;    (set-fontset-font nil 'japanese-jisx0213-2 jp-fontspec)
-;    (set-fontset-font nil '(#x0080 . #x024F) fontspec)
-;    (set-fontset-font nil '(#x0370 . #x03FF) fontspec))
-;)
+;;; 外観
+(require 'appearance) ; color themeやfont関連は，elisp/appearance.elで指定）
 
 (setq-default line-spacing 0) ; 行間
 
 (global-hl-line-mode) ; 現在の行を目立たせる
 (setq hl-line-face 'underline) ; 目立たせるスタイル
 
-(global-highlight-changes-mode t) ; 変更箇所を目立たせる
+;(global-highlight-changes-mode t) ; 変更箇所を目立たせる
 
 (show-paren-mode t) ; 対応する括弧をハイライト
 (setq show-paren-delay 0) ; 強調表示のディレイ
@@ -67,7 +44,7 @@
 )
 
 (setq-default show-trailing-whitespace t) ; 行末の空白を強調表示
-;(set-face-background 'trailing-whitespace "#b14770") ; 強調表示の色
+(set-face-background 'trailing-whitespace "#b14770") ; 強調表示の色  
 
 
 ;;; コード関連
@@ -86,14 +63,22 @@
 (fset 'yes-or-no-p 'y-or-n-p) ; yes or noをy or n
 
 ;;; helm
-(add-to-list 'load-path ".emacs.d/helm")
+(add-to-list 'load-path "~/dotfiles/.emacs.d/helm")
 (require 'helm-config)
 
 ;;; undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode t)
 
+;;; rainbow-mode
+(require 'rainbow-mode)
+(add-hook 'css-mode-hook 'rainbow-mode)
+(add-hook 'scss-mode-hook 'rainbow-mode)
+(add-hook 'php-mode-hook 'rainbow-mode)
+(add-hook 'html-mode-hook 'rainbow-mode)
+
 ;;; load markdown-mode
-(load (expand-file-name (concat (getenv "HOME") "/.emacs.d/elisp/md.el")))
+(require 'md)
+;(load (expand-file-name (concat (getenv "HOME") "/.emacs.d/elisp/md.el")))
 
 

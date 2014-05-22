@@ -9,7 +9,6 @@
 ; Markdownファイルのプレビュー
 ; C-c C-c mでバッファにプレビュ　C-c C-c pでブラウザでプレビュー
 ; C-c C-c eでhtmlに変換して保存
-;(setq markdown-command "/usr/local/bin/markdown")
 (setq markdown-command "perl ~/dotfiles/.emacs.d/Markdown_1.0.1/Markdown.pl")
 
 ;;; Markdownの見出し検索
@@ -21,3 +20,5 @@
   (other-window 1))
 (require 'markdown-mode)
 (define-key markdown-mode-map "\C-c\C-s" 'markdown-header-list)
+
+(provide 'md)
