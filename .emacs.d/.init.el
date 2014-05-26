@@ -77,8 +77,16 @@
 (add-hook 'php-mode-hook 'rainbow-mode)
 (add-hook 'html-mode-hook 'rainbow-mode)
 
+;;; load php-mode
+(add-to-list 'load-path "~/dotfiles/.emacs.d/php-mode")
+(require 'php-mode)
+(setq php-mode-force-pear t)
+
 ;;; load markdown-mode
 (require 'md)
 ;(load (expand-file-name (concat (getenv "HOME") "/.emacs.d/elisp/md.el")))
+
+;;; fly male
+(require 'flymake-conf)
 
 

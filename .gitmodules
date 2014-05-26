@@ -14,3 +14,6 @@
 [submodule ".emacs.d/helm"]
 	path = .emacs.d/helm
 	url = https://github.com/emacs-helm/helm.git
+[submodule ".emacs.d/php-mode"]
+	path = .emacs.d/php-mode
+	url = https://github.com/ejmr/php-mode.git
