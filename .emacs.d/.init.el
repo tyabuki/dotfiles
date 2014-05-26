@@ -63,7 +63,8 @@
 (fset 'yes-or-no-p 'y-or-n-p) ; yes or noをy or n
 
 ;;; helm
-(add-to-list 'load-path "~/dotfiles/.emacs.d/helm")
+;(add-to-list 'load-path "~/dotfiles/.emacs.d/helm")
+(add-to-load-path "helm")
 (require 'helm-config)
 
 ;;; undo-tree
@@ -78,7 +79,8 @@
 (add-hook 'html-mode-hook 'rainbow-mode)
 
 ;;; load php-mode
-(add-to-list 'load-path "~/dotfiles/.emacs.d/php-mode")
+;(add-to-list 'load-path "~/dotfiles/.emacs.d/php-mode")
+(add-to-load-path "php-mode")
 (require 'php-mode)
 (setq php-mode-force-pear t)
 
@@ -89,4 +91,9 @@
 ;;; fly male
 (require 'flymake-conf)
 
+;;; auto-complete
+(add-to-load-path "auto-complete-1.3.1")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/dotfiles/.emacs.d/auto-complete-1.3.1/dict")
+(ac-config-default)
 
