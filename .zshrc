@@ -22,7 +22,7 @@ case ${UID} in
     PROMPT="%B[%F{2}%n@%M%f]%#%b "
     RPROMPT="%~"
     ;;
-esac 
+esac
 
 ### 補完関連
 # git用補完とRPROMPT
@@ -60,17 +60,15 @@ zshaddhistory(){ # その他除外するコマンドの指定(ls,cd,rm,man系)
 
 ### lsのエイリアス（linuxとBSD系でオプションが違う）
 case "${OSTYPE}" in
-darwin*)
+darwin*|freebsd*)
   alias ls="ls -G"
-  alias ll="ls -l"
-  alias la="ls -la"
   ;;
 linux*)
   alias ls="ls --color=auto"
-  alias ll="ls -l"
-  alias la="ls -la"
   ;;
 esac
+  alias ll="ls -l"
+  alias la="ls -la"
 
 ### cd / auto pushd関連
 #setopt auto_cd # ディレクトリ名で勝手にcd
@@ -115,16 +113,20 @@ kterm*|*xterm*|(dt|k|E)term)
 	#print -Pn "\e]0;$*\a"
     }
     ;;
-esac 
+esac
 
 ### 環境依存設定の読み込み
+# Mac用
+if [ -f ~/.zshrc.mac ]; then
+    source ~/.zshrc.mac
+fi
+# FreeBSD用
+if [ -f ~/.zshrc.bsd ]; then
+    source ~/.zshrc.bsd
+fi
 # ローカル設定
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
-fi
-# mac用
-if [ -f ~/.zshrc.mac ]; then
-    source ~/.zshrc.mac
 fi
 
 #################################################
@@ -155,6 +157,6 @@ fi
 # %D 年月日表示(yy-mm-dd)
 # %F 文字の色(%fで終了) *1
 # %K 文字背景の色(%kで終了) *1
-# 
-# *1:色は基本だけなら、0:black、1:red、2:green、3:yellow、4:blue、5:magenta、6:cyan、7:whiteが利用できる。数字は色の番号。 
+#
+# *1:色は基本だけなら、0:black、1:red、2:green、3:yellow、4:blue、5:magenta、6:cyan、7:whiteが利用できる。数字は色の番号。
 
