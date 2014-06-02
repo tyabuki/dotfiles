@@ -1,0 +1,5 @@
+
+### FreeBSDでportsから入れると以下に入る．/bin/zshとか/usr/bin/zshには無い！
+set-option -g default-shell /usr/local/bin/zsh
+set-option -g default-command /usr/local/bin/zsh
+
