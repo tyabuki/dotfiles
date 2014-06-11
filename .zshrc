@@ -67,8 +67,8 @@ linux*)
   alias ls="ls --color=auto"
   ;;
 esac
-  alias ll="ls -l"
-  alias la="ls -la"
+  alias ll="ls -lh"
+  alias la="ls -lah"
 
 ### cd / auto pushd関連
 #setopt auto_cd # ディレクトリ名で勝手にcd
