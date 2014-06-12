@@ -23,6 +23,7 @@ fpath=(~/dotfiles/.zsh $fpath)
 
 ### alias
 alias gl='git log --graph --pretty=format:"%C(yellow)%h%Creset%C(red)%d%Creset %ad %C(Green)%s%Creset"'
+alias grm='git rm $(git ls-files --deleted)'
 
 ### --pretty=:formatの指定
 ##################################################################################
