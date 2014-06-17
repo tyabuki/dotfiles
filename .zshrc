@@ -98,6 +98,8 @@ function mkdir(){
 ### その他設定
 setopt notify # background jobの状態報告を即座に行う
 setopt rm_star_wait # 特定の対象へのrm実行前に10秒待ち，その後確認する
+alias vim="emacs"
+alias vi="emacs"
 
 ### ターミナルのタイトルに実行中のコマンド名を出力
 # よく分からないのでそのうち直す
