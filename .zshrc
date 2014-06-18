@@ -26,8 +26,8 @@ esac
 
 ### 補完関連
 # git用補完とRPROMPT
-if [ -f ~/.zshrc.g ]; then
-    source ~/.zshrc.g
+if [ -f ~/.zshrc.git ]; then
+    source ~/.zshrc.git
 fi
 autoload -Uz compinit; compinit # 補完有効
 #autoload -Uz predict-on; predict-on # 先行補完を有効
