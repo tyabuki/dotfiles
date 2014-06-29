@@ -1,12 +1,13 @@
 ### originに関して
-* ここ→[http://yabuuuuu.mydns.jp/yabuuuuu/dotfiles](http://yabuuuuu.mydns.jp/yabuuuuu/dotfiles)
- - **特に[wiki](http://yabuuuuu.mydns.jp/yabuuuuu/dotfiles/wikis/home)**
+* ここ[http:/gitlab.yabuuuuu.mydns.jp/yabuuuuu/dotfiles](http://gitlab.yabuuuuu.mydns.jp/yabuuuuu/dotfiles)
+ - **[wiki](http://gitlab.yabuuuuu.mydns.jp/yabuuuuu/dotfiles/wikis/home)**
 
 ### 途中 or まだやってない
 * emacs用設定書き直し中．
-* `.screenrc` screenをほとんど使わないので放置．
+* `.screenrc` もうscreenをほとんど使わないので放置．
 * `.bashrc` ほとんど使わないが，とりあえずroot以外のプロンプトのみ設定．
 * `install.sh`は結構適当．
+* `.zshrc*`は適宜追加していく．
 
 ### インストール
 1. ホーム直下にclone（`~/dotfilesって感じ）
@@ -20,13 +21,16 @@
  - そのほかの環境依存設定も，個別に`.zshrc.local`に書く．`~/`に置くかsym-linkを貼ると，同様に読み込まれる．
 
 #### Git
-* `.zshrc.g`に隔離する．git_ps1はgitリポジトリ内で自動で有効になる．
+* `.zshrc.git`に隔離する．git_ps1はgitリポジトリ内で自動で有効になる．
  - リポジトリのstatus表示はリポジトリにファイルが一杯あると重い．
- - **詳細は[wiki](http://yabuuuuu.mydns.jp/yabuuuuu/dotfiles/wikis/home)**
+ - **詳細は[wiki](http://gitlab.yabuuuuu.mydns.jp/yabuuuuu/dotfiles/wikis/home)**
 
 #### Docker
 1. `.zshrc.docker`のsym-linkを張る．
 1. 以下を`.zshrc.local`にでも書く
+
+dockerを起動できるユーザ（dockerが使うUNIXソケット`/var/run/docker.sock`に書き込み権限があるユーザ）でないとエラーを吐く
+
 
 ```Bash
 if [ -f ~/.zshrc.docker ]; then
@@ -37,9 +41,11 @@ fi
 ### Emacs関連
 * 今のところEmacs24専用．Emacs23では動かない．
  - カラーテーマの所をコメントアウトすれば23でも動くかも（未確認）
-* sudoでは動かない．HOMEが変わるため？
+ - sudoでは動かないときは，後から入れたEmacs24がちゃんと起動しているか確認．
 
-### corp用設定について
-* 個人用GitLab(yabuuuuu.mydns.jp)にはpushしない．
- - 個人用からマージして一方的に更新．従ってcorp専用設定以外はcorpリポジトリに加えない．
+### misc(miscellaneous)フォルダ
+* dotfile以外の環境設定など
+
+### 会社では
+* 個人用GitLab(gitlab.yabuuuuu.mydns.jp)からpullするのは良いが，pushしてはいけない
 
