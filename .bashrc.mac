@@ -1,0 +1,8 @@
+
+## brew binary
+PATH=/usr/local/bin:$PATH
+
+## alias
+alias ls="ls -G"
+alias ll="ls -lh"
+alias la="ls -lah"

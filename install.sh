@@ -35,6 +35,7 @@ ln -siv ~/dotfiles/.emacs.d ~/.emacs.d
 ## bash
 #ln -siv ~/dotfiles/.bash_profile ~/.bash_profile
 #ln -siv ~/dotfiles/.bashrc ~/.bashrc
+#ln -siv ~/dotfiles/.bashrc.mac ~/.bashrc.mac
 
 ## screen
 #ln -siv ~/dotfiles/.screenrc ~/.screenrc
