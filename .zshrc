@@ -2,7 +2,7 @@
 
 ### 基本設定
 autoload -U colors; colors # カラー表示を有効
-export LANG=ja_JP.UTF-8
+export LANG=en_US.UTF-8
 ulimit -u unlimited # 1ユーザあたりのプロセス数上限
 
 ### key bind(Emacs)
