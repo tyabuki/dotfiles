@@ -1,7 +1,7 @@
 ### docker用
 
 # 停止しているコンテナの削除
-alias drm="docker rm `docker ps -a -q`"
+alias drm='docker rm $(docker ps -a -q)'
 
 # REPOSITORYが<none>なイメージの削除
 alias drmi="docker rmi $(docker images | awk '/^<none>/ { print $3 }')"
