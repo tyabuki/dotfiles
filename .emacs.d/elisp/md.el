@@ -3,8 +3,8 @@
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
 
 ; markdown-modeで開くファイルの指定
-(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.md" . gfm-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.markdown" . gfm-mode) auto-mode-alist))
 
 ; Markdownファイルのプレビュー
 ; C-c C-c mでバッファにプレビュ　C-c C-c pでブラウザでプレビュー
