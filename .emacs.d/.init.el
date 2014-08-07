@@ -86,7 +86,7 @@
 
 ;;; auto-complete
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/dotfiles/.emacs.d/auto-complete-1.3.1/dict")
+(add-to-list 'ac-dictionary-directories "~/dotfiles/.emacs.d/auto-complete-dict")
 (ac-config-default)
 
 ;;; undo-tree
