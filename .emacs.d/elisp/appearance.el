@@ -1,8 +1,6 @@
 ;;; 表示関連
 
 ; Solarizedテーマの適用
-;(add-to-list 'custom-theme-load-path "~/.emacs.d/solarized-emacs")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized")
 (load-theme 'solarized-dark t) ; または(load-theme 'solarized-light t)
 
 ;;; 実行環境による場合分け
@@ -28,7 +26,7 @@
 	  (set-fontset-font nil '(#x0370 . #x03FF) fontspec))
         )
       (tool-bar-mode 0)
-    
+	  
     )
     ;; text-olny terminal
     

@@ -1,3 +1,4 @@
+;;;
 ; -*- Mode: Emacs-Lisp ; Coding: utf-8 -*-
 ;; ------------------------------------------------------------------------
 ;; @ load-path
@@ -14,6 +15,11 @@
 ; 2つ以上フォルダを指定する場合の引数 => (add-to-load-path "elisp" "xxx" "xxx")
 (add-to-load-path "elisp")
 
+;;; パッケージ関連
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/")) ; MELPAを追加
+(add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/")) ; Marmaladeを追加
+(package-initialize)
 
 ;;; 外観
 (require 'appearance) ; color themeやfont関連は，elisp/appearance.elで指定）
@@ -63,7 +69,7 @@
 (setq require-final-newline t) ; 末尾に必ず空行を挿入
 
 (setq default-tab-width 4) ; tabの幅
-(setq-default indent-tab-mode nil) ; soft-tabを挿入
+(setq-default indent-tabs-mode nil) ; soft-tabを挿入
 
 
 ;;; emacsの挙動関連
@@ -75,13 +81,20 @@
 (fset 'yes-or-no-p 'y-or-n-p) ; yes or noをy or n
 
 ;;; helm
-;(add-to-list 'load-path "~/dotfiles/.emacs.d/helm")
-(add-to-load-path "helm")
 (require 'helm-config)
+(helm-mode t)
+
+;;; auto-complete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/dotfiles/.emacs.d/auto-complete-1.3.1/dict")
+(ac-config-default)
 
 ;;; undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode t)
+
+;;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;;; rainbow-mode
 (require 'rainbow-mode)
@@ -90,25 +103,26 @@
 (add-hook 'php-mode-hook 'rainbow-mode)
 (add-hook 'html-mode-hook 'rainbow-mode)
 
-;;; web-mode
-(require 'web-mode-cnf)
+;;; markdown-mode
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-;;; load php-mode
-;(add-to-list 'load-path "~/dotfiles/.emacs.d/php-mode")
-(add-to-load-path "php-mode")
+;;; rainbow-delimiters
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;;; web-mode
+(require 'init-web-mode)
+
+;;; js2-mode
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+;;; php-mode
 (require 'php-mode)
 (setq php-mode-force-pear t)
 
-;;; load markdown-mode
-(require 'md)
-;(load (expand-file-name (concat (getenv "HOME") "/.emacs.d/elisp/md.el")))
 
-;;; fly male
-(require 'flymake-conf)
-
-;;; auto-complete
-(add-to-load-path "auto-complete-1.3.1")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/dotfiles/.emacs.d/auto-complete-1.3.1/dict")
-(ac-config-default)
 
