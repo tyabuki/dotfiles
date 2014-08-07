@@ -27,3 +27,6 @@ tramp
 
 # AUCTeX auto folder
 /auto/
+
+# auto-conpletion
+ac-comphist.dat
