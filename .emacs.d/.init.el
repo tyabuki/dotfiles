@@ -47,11 +47,23 @@
 (set-face-background 'trailing-whitespace "#b14770") ; 強調表示の色  
 
 
+;;; 全角スペースとハードタブを強調表示
+(global-whitespace-mode t)
+(setq whitespace-space-regexp "\\(\u3000\\)")
+(setq whitespace-style '(face tabs tab-mark spaces space-mark))
+(setq whitespace-display-mappings ())
+(set-face-foreground 'whitespace-tab "yellow")
+(set-face-underline  'whitespace-tab t)
+(set-face-foreground 'whitespace-space "yellow")
+;(set-face-background 'whitespace-space "blue4")
+(set-face-underline  'whitespace-space t)
+
+
 ;;; コード関連
 (setq require-final-newline t) ; 末尾に必ず空行を挿入
 
-(setq tab-width 4) ; tabの幅
-(setq-default indent-tab-mod t) ; tabを挿入
+(setq default-tab-width 4) ; tabの幅
+(setq-default indent-tab-mode nil) ; soft-tabを挿入
 
 
 ;;; emacsの挙動関連
