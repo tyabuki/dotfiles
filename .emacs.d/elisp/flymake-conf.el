@@ -3,7 +3,6 @@
 (when (require 'flymake nil t)
 
   ;(global-set-key "\C-cd" 'flymake-display-err-menu-for-current-line)
-
   ; エラーをミニバッファに表示
   (defun flymake-show-and-sit ()
     "Displays the error/warning for the current line in the minibuffer"
@@ -66,10 +65,37 @@
            flymake-err-line-patterns))
     )
 
+  ;; C
+  (defun flymake-c-init ()
+    (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+			 'flymake-create-temp-inplace))
+	   (local-file  (file-relative-name
+			 temp-file
+			 (file-name-directory buffer-file-name))))
+      (list "clang" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
+
+  (push '("\\.c$" flymake-c-init) flymake-allowed-file-name-masks)
+
+  ;; C++
+  (defun flymake-cc-init ()
+    (let* ((temp-file   (flymake-init-create-temp-buffer-copy
+			 'flymake-create-temp-inplace))
+	   (local-file  (file-relative-name
+			 temp-file
+			 (file-name-directory buffer-file-name))))
+      (list "clang++" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
+
+  (push '("\\.cpp$" flymake-cc-init) flymake-allowed-file-name-masks)
+
   (add-hook 'php-mode-hook
             '(lambda() (flymake-mode t)))
   (add-hook 'javascript-mode-hook
             '(lambda() (flymake-mode t)))
-)
+  (add-hook 'c-mode-hook
+	    '(lambda() (flymake-mode t)))
+  (add-hook 'c++-mode-hook
+	    '(lambda() (flymake-mode t)))
+
+  )
 
 (provide 'flymake-conf)
