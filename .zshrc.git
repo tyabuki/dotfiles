@@ -22,7 +22,7 @@ zstyle ':completion:*:*:git:*' script ~/dotfiles/.zsh/.git-completion.bash
 fpath=(~/dotfiles/.zsh $fpath)
 
 ### alias
-alias gl='git log --graph --pretty=format:"%C(yellow)%h%Creset%C(red)%d%Creset %ad %C(Green)%s%Creset"'
+alias gl='git log --graph --pretty=format:"%C(yellow)%h%Creset%C(cyan)(%an)%Creset%C(red)%d%Creset %ad %C(Green)%s%Creset"'
 alias grm='git rm $(git ls-files --deleted)'
 
 ### --pretty=:formatの指定
