@@ -1,8 +1,8 @@
 忘れないようにメモ．
 
 ### origin
-* [http:/gitlab.yabuuuuu.mydns.jp/yabuuuuu/dotfiles](http://gitlab.yabuuuuu.mydns.jp/yabuuuuu/dotfiles)
- - **[wiki](http://gitlab.yabuuuuu.mydns.jp/yabuuuuu/dotfiles/wikis/home)**
+* [https://gitlab.yabuuuuu.mydns.jp/yabuuuuu/dotfiles](https://gitlab.yabuuuuu.mydns.jp/yabuuuuu/dotfiles)
+ - **[wiki](https://gitlab.yabuuuuu.mydns.jp/yabuuuuu/dotfiles/wikis/home)**
 
 ### 途中・まだやってない
 * emacs関連は24対応のため全て破棄して書き直し中
@@ -63,5 +63,3 @@ fi
 
 ### misc(miscellaneous)フォルダ
 * dotfile以外の環境設定など
-
-

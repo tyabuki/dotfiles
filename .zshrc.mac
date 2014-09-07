@@ -2,5 +2,11 @@
 # brewのバイナリを優先する
 PATH=/usr/local/bin:$PATH
 
+# brewで入れたzsh-completion
+### これはautoload -U compinit; compinit -uより前に書かないと意味ない
+#if [ -e /usr/local/share/zsh-completions ]; then
+#    fpath=(/usr/local/share/zsh-completions $fpath)
+#fi
+
 # python snack用（無いとbyobu-configがこける）
 #PYTHONPATH=/usr/local/lib/python2.7/site-packages
