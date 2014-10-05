@@ -15,6 +15,9 @@
 ; 2つ以上フォルダを指定する場合の引数 => (add-to-load-path "elisp" "xxx" "xxx")
 (add-to-load-path "elisp")
 
+;;; キーバインド
+(global-unset-key "\C-t")
+
 ;;; パッケージ関連
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/")) ; MELPAを追加
