@@ -20,24 +20,16 @@ fi
 ln -siv ~/dotfiles/.tmux.conf ~/.tmux.conf
 
 ## emacs
-#if [ -f ~/.emacs ]; then
-#    echo "exists '.emacs'. rename it to '.emacs.old'."
-#    mv ~/.emacs ~/.emacs.old
-#fi
-#ln -siv ~/dotfiles/.emacs ~/.emacs
+if [ -f ~/.emacs ]; then
+    echo "exists '.emacs'. rename it to '.emacs.old'."
+    mv ~/.emacs ~/.emacs.old
+fi
+ln -siv ~/dotfiles/.emacs ~/.emacs
 
 if [ -d ~/.emacs.d ]; then
     echo "exists '.emacs.d'. rename it to '.emacs.d.old'."
     mv ~/.emacs.d ~/.emacs.d.old
 fi
 ln -siv ~/dotfiles/.emacs.d ~/.emacs.d
-
-## bash
-#ln -siv ~/dotfiles/.bash_profile ~/.bash_profile
-#ln -siv ~/dotfiles/.bashrc ~/.bashrc
-#ln -siv ~/dotfiles/.bashrc.mac ~/.bashrc.mac
-
-## screen
-#ln -siv ~/dotfiles/.screenrc ~/.screenrc
 
 

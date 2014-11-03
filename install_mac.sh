@@ -32,6 +32,12 @@ if [ -f ~/.tmux.conf ]; then
 fi
 ln -siv ~/dotfiles/.tmux.conf ~/.tmux.conf
 
+if [ -f ~/.tmux.conf.mac ]; then
+    echo "exists '.tmux.conf.mac'. rename it to '.tmux.conf.mac.old'. "
+    mv ~/.tmux.conf.mac ~/.tmux.conf.mac.old
+fi
+ln -siv ~/dotfiles/.tmux.conf.mac ~/.tmux.conf.mac
+
 ## emacs
 if [ -f ~/.emacs ]; then
     echo "exists '.emacs'. rename it to '.emacs.old'."
