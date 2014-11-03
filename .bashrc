@@ -10,7 +10,4 @@ fi
 ### プロンプトの設定
 PS1="[\[\e[1;32m\]\u@\H\e[00m\]:\[\e[1;32m\]\w\[\e[00m\]]% "
 
-if [ -f ~/.bashrc.mac ]; then
-	. ~/.bashrc.mac
-fi
 
