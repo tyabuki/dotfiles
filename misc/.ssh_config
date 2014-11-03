@@ -1,0 +1,68 @@
+## Local
+# test server(ubuntu server 14.04LTS)
+Host test
+     User user
+     HostName 192.168.11.160
+     Port 22
+# docker base
+Host ubuntu-base
+     User yabuuuuu
+     HostName 192.168.11.44
+     Port 22
+     IdentityFile ~/.ssh/id_ecdsa
+     ForwardAgent yes
+# samba
+Host server-ubuntu
+     User yabuuuuu
+     HostName 192.168.11.42
+     Port 22
+# old server
+Host server-ubuntu1404
+     User yabuuuuu
+     HostName 192.168.11.43
+     Port 22
+     IdentityFile ~/.ssh/id_ecdsa
+     ForwardAgent yes
+# main server
+Host server
+     User yabuuuuu
+     HostName 192.168.11.45
+     Port 22
+     IdentityFile ~/.ssh/id_ecdsa
+     ForwardAgent yes
+ 
+# インターネット
+# main
+Host gitlab.yabuuuuu.mydns.jp
+     IdentityFile ~/.ssh/id_ecdsa
+
+Host yabuuuuu.mydns.jp
+     User yabuuuuu
+     # 22022 -> 22へルーターでマップ
+     Port 22022
+     IdentityFile ~/.ssh/id_ecdsa
+     ForwardAgent yes
+ 
+# kstc
+Host kstc
+     User kstc
+     HostName s13.rs2.gehirn.jp
+     IdentityFile ~/.ssh/id_rsa
+ 
+# github
+Host github.com
+     IdentityFile ~/.ssh/github_ecdsa
+
+## localはhost keyが変わっても警告を出さない
+Host 192.168.11.*
+     StrictHostKeyChecking no
+     UserKnownHostsFile=/dev/null
+Host 192.168.12.*
+     StrictHostKeyChecking no
+     UserKnownHostsFile=/dev/null
+Host localhost
+     StrictHostKeyChecking no
+     UserKnownHostsFile=/dev/null
+Host 127.0.0.1
+     StrictHostKeyChecking no
+     UserKnownHostsFile=/dev/null
