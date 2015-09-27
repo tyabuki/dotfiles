@@ -1,4 +1,4 @@
-
+# .zshrc for mac
 # brewのバイナリを優先する
 PATH=/usr/local/bin:$PATH
 
@@ -12,5 +12,3 @@ export HOMEBREW_CURL_VERBOSE=1
 #    fpath=(/usr/local/share/zsh-completions $fpath)
 #fi
 
-# python snack用（無いとbyobu-configがこける）
-#PYTHONPATH=/usr/local/lib/python2.7/site-packages
