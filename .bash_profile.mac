@@ -1,10 +1,17 @@
-# for mac
-# .bash_profile
+# .bash_profile for mac
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+    . ~/.bashrc
 fi
 
 # User specific environment and startup programs
+
+## brew openssh with keychain support
+#eval $(ssh-agent)
+#function cleanup {
+#  echo "Killing SSH-Agent"
+#  kill -9 $SSH_AGENT_PID
+#}
+#trap cleanup EXIT
 
