@@ -119,16 +119,16 @@ setopt rm_star_wait # 特定の対象へのrm実行前に10秒待ち，その後
 
 ### 環境依存設定の読み込み
 # Mac用
-if [ -f ~/.zshrc.mac ]; then
-    source ~/.zshrc.mac
+if [ -f ~/.zshrc_mac ]; then
+    source ~/.zshrc_mac
 fi
 # FreeBSD用
-if [ -f ~/.zshrc.bsd ]; then
-    source ~/.zshrc.bsd
+if [ -f ~/.zshrc_bsd ]; then
+    source ~/.zshrc_bsd
 fi
 # ローカル設定
-if [ -f ~/.zshrc.local ]; then
-    source ~/.zshrc.local
+if [ -f ~/.zshrc_local ]; then
+    source ~/.zshrc_local
 fi
 
 #################################################

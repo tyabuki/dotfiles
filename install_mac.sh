@@ -3,13 +3,13 @@ if [ -f ~/.bash_profile ]; then
     echo "exists '.bash_profile'. rename it to '.bash_profile.old'. "
     mv ~/.bash_profile ~/.bash_profile.old
 fi
-ln -siv ~/dotfiles/dot_bash_profile.mac ~/.bash_profile
+ln -siv ~/dotfiles/dot_bash_profile_mac ~/.bash_profile
 
 if [ -f ~/.bashrc ]; then
     echo "exists '.bashrc'. rename it to '.bashrc.old'. "
     mv ~/.bashrc ~/.bashrc.old
 fi
-ln -siv ~/dotfiles/dot_bashrc.mac ~/.bashrc
+ln -siv ~/dotfiles/dot_bashrc_mac ~/.bashrc
 
 
 # zsh
@@ -19,6 +19,12 @@ if [ -f ~/.zshrc ]; then
 fi
 ln -siv ~/dotfiles/dot_zshrc ~/.zshrc
 
+if [ -f ~/.zshrc_mac ]; then
+    echo "exists '.zshrc_mac'. rename it to '.zshrc_mac.old'. "
+    mv ~/.zshrc_mac ~/.zshrc_mac.old
+fi
+ln -siv ~/dotfiles/dot_zshrc_mac ~/.zshrc_mac
+
 
 # tmux
 if [ -f ~/.tmux.conf ]; then
@@ -27,11 +33,11 @@ if [ -f ~/.tmux.conf ]; then
 fi
 ln -siv ~/dotfiles/dot_tmux.conf ~/.tmux.conf
 
-if [ -f ~/.tmux.conf.mac ]; then
-    echo "exists '.tmux.conf.mac'. rename it to '.tmux.conf.mac.old'. "
-    mv ~/.tmux.conf.mac ~/.tmux.conf.mac.old
+if [ -f ~/.tmux_mac.conf ]; then
+    echo "exists '.tmux_mac.conf'. rename it to '.tmux_mac.conf.old'. "
+    mv ~/.tmux_mac.conf ~/.tmux_mac.conf.old
 fi
-ln -siv ~/dotfiles/dot_tmux.conf.mac ~/.tmux.conf.mac
+ln -siv ~/dotfiles/dot_tmux_mac.conf ~/.tmux_mac.conf
 
 
 # emacs
