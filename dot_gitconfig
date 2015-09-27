@@ -2,7 +2,7 @@
     co = checkout
     ci = commit -m
     br = branch -vva
-    lg = log --graph --pretty=format:"%C(yellow)%h%Creset%C(cyan)(%an)%Creset%C(red)%d%Creset %ad %C(Green)%s%Creset"'
+    lg = log --graph '--pretty=format:"%C(yellow)%h%Creset%C(cyan)(%an)%Creset%C(red)%d%Creset %ad %C(Green)%s%Creset"'
 ## --pretty=:formatの指定 ########################################################
 # %H      コミットのハッシュ
 # %h      コミットのハッシュ (短縮版)
