@@ -1,4 +1,8 @@
+[include]
+    path = ~/.gitconfig_local
+
 [alias]
+    st = status
     co = checkout
     ci = commit -m
     br = branch -vva
