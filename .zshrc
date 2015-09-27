@@ -30,6 +30,7 @@ RPROMPT="%*"
 
 # gitがある環境の場合
 if type git > /dev/null 2>&1; then
+    # 右プロンプト
     precmd(){
         RPROMPT='$(__git_ps1 "[%s]")%*'
     }
@@ -44,8 +45,15 @@ if type git > /dev/null 2>&1; then
     #   verbose |    u-数字      | u+数字 |   =
     #GIT_PS1_DESCRIBE_STYLE="default"
     GIT_PS1_SHOWCOLORHINTS=0 # DIRTYSTATEが有効な時，カラー表示
+
+    # git系コマンドの補完
     zstyle ':completion:*:*:git:*' script ~/dotfiles/.zsh/.git-completion.bash
     fpath=(~/dotfiles/.zsh $fpath)
+fi
+
+# zsh-completionsによる補完強化
+if [ -e ~/dotfiles/zsh-completions/src ]; then
+    fpath=(~/dotfiles/zsh-completions/src $fpath)
 fi
 
 
