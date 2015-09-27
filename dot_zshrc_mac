@@ -1,0 +1,8 @@
+# .zshrc for mac
+# brewのバイナリを優先する
+PATH=/usr/local/bin:$PATH
+
+# brewの環境変数
+export HOMEBREW_VERBOSE=1
+export HOMEBREW_CURL_VERBOSE=1
+

@@ -1,40 +1,70 @@
-# 環境固有の設定は，.zsh.localとか.zsh.macに書く．
+# .zshrc
+# *環境固有の設定は，.zsh.localとか.zsh.macに書く．
 
 ### 基本設定
 autoload -U colors; colors # カラー表示を有効
 export LANG=en_US.UTF-8
 ulimit -u unlimited # 1ユーザあたりのプロセス数上限
 
+
 ### key bind(Emacs)
-export EDITOR=emacs
-export SVN_EDITOR=emacs
 bindkey -e
 
-### プロンプトの指定
+
+### prompt
 case ${UID} in
 # root
 0)
-    PROMPT="%B[%F{1}%n@%M%f]%#%b "
-    RPROMPT="%~"
+    PROMPT="%B[%F{cyan}%/%f@%F{green}%M%f]
+%F{red}%n%f #%b "
     ;;
 # 一般ユーザ
 *)
-    PROMPT="%B[%F{2}%n@%M%f]%#%b "
-    RPROMPT="%~"
+    PROMPT="%B[%F{cyan}%/%f@%F{green}%M%f]
+%F{green}%n%f $%b "
     ;;
 esac
 
-### 補完関連
-# git用補完とRPROMPT
-if [ -f ~/.zshrc.git ]; then
-    source ~/.zshrc.git
+RPROMPT="%*"
+
+
+# gitがある環境の場合
+if type git > /dev/null 2>&1; then
+    # 右プロンプト
+    precmd(){
+        RPROMPT='$(__git_ps1 "[%s]")%*'
+    }
+    source ~/dotfiles/git-completion/git-prompt.sh
+    setopt prompt_subst # プロンプト内で変数を展開
+    GIT_PS1_SHOWDIRTYSTATE=1 # 未ステージの変更があれば「*」 ステージ済の変更があれば「+」
+    GIT_PS1_SHOWSTASHSTATE=1 # スラッシュが存在すれば「$」
+    GIT_PS1_SHOWUNTRACKEDFILES=1 # 追跡されていないファイルがあれば「%」
+    GIT_PS1_SHOWUPSTREAM="verbose" # コミットの差分状態を表示(下記)
+    #            アップストリーム|ローカル|変更なし
+    #   auto    |      <         |    >   |   =
+    #   verbose |    u-数字      | u+数字 |   =
+    #GIT_PS1_DESCRIBE_STYLE="default"
+    GIT_PS1_SHOWCOLORHINTS=0 # DIRTYSTATEが有効な時，カラー表示
+
+    # git系コマンドの補完
+    zstyle ':completion:*:*:git:*' script ~/dotfiles/git-completion/git-completion.bash
+    fpath=(~/dotfiles/.zsh $fpath)
 fi
+
+# zsh-completionsによる補完強化
+if [ -e ~/dotfiles/zsh-completions/src ]; then
+    fpath=(~/dotfiles/zsh-completions/src $fpath)
+fi
+
+
+### 補完関連
 autoload -Uz compinit; compinit # 補完有効
 #autoload -Uz predict-on; predict-on # 先行補完を有効
 setopt correct # スペルミスの訂正を行う
 setopt list_packed # compact viewを有効
 setopt no_beep # beepを鳴らさない
 setopt nolistbeep # beepを鳴らさない
+
 
 ### history
 HISTFILE=~/.zsh_history
@@ -48,15 +78,13 @@ setopt hist_no_functions # 関数定義は記憶しない
 setopt hist_no_store # historyコマンドは記憶しない
 setopt hist_reduce_blanks # 余分なスペースを取り除く
 setopt share_history # historyを異なるzsh間で共有
-zshaddhistory(){ # その他除外するコマンドの指定(ls,cd,rm,man系)
+# historyから除外するコマンドの指定(ls,cd,rm,man系)
+zshaddhistory(){
     local line=${1%%$'\n'}
     local cmd=${line%% *}
-    [[ ${cmd} != (l|l[sal])
-	    && ${cmd} != (c|cd)
-	    && ${cmd} != (r[mr])
-	    && ${cmd} != (m|man)
-    ]]
+    [[ ${cmd} != (l|l[sal]) && ${cmd} != (c|cd) && ${cmd} != (r[mr]) && ${cmd} != (m|man) ]]
 }
+
 
 ### lsのエイリアス（linuxとBSD系でオプションが違う）
 case "${OSTYPE}" in
@@ -67,8 +95,9 @@ linux*)
   alias ls="ls --color=auto"
   ;;
 esac
-  alias ll="ls -lh"
-  alias la="ls -lah"
+alias ll="ls -lh"
+alias la="ls -lah"
+
 
 ### cd / auto pushd関連
 #setopt auto_cd # ディレクトリ名で勝手にcd
@@ -82,53 +111,24 @@ function cd(){
     ls
 }
 
-### mkdirのあとにcdを自動で実行
-function mkdir(){
-    if [ ! -n "$1" ]; then
-	echo "Enter a directory name."
-    elif [ -d $1 ]; then
-	echo "'$1' already exists! cd into the directory."
-	builtin cd $1
-    else
-	command mkdir -p $1
-	builtin cd $1
-    fi
-}
 
 ### その他設定
 setopt notify # background jobの状態報告を即座に行う
 setopt rm_star_wait # 特定の対象へのrm実行前に10秒待ち，その後確認する
-alias vim="emacs"
-alias vi="emacs"
 
-### ターミナルのタイトルに実行中のコマンド名を出力
-# よく分からないのでそのうち直す
-case "${TERM}" in
-kterm*|*xterm*|(dt|k|E)term)
-    precmd(){
-	# a function which is executed just before each prompt
-	echo -ne "\033]0;${USER}@${HOST%%.*} : ${PWD}\007"
-    }
-    preexec(){
-	# a function which is just before a command is excuted
-	print -Pn "\e]0;${USER}@${HOST%%.*} : ${PWD} : $1\a"
-	#print -Pn "\e]0;$*\a"
-    }
-    ;;
-esac
 
 ### 環境依存設定の読み込み
 # Mac用
-if [ -f ~/.zshrc.mac ]; then
-    source ~/.zshrc.mac
+if [ -f ~/.zshrc_mac ]; then
+    source ~/.zshrc_mac
 fi
 # FreeBSD用
-if [ -f ~/.zshrc.bsd ]; then
-    source ~/.zshrc.bsd
+if [ -f ~/.zshrc_bsd ]; then
+    source ~/.zshrc_bsd
 fi
 # ローカル設定
-if [ -f ~/.zshrc.local ]; then
-    source ~/.zshrc.local
+if [ -f ~/.zshrc_local ]; then
+    source ~/.zshrc_local
 fi
 
 #################################################
