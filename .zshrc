@@ -34,7 +34,7 @@ if type git > /dev/null 2>&1; then
     precmd(){
         RPROMPT='$(__git_ps1 "[%s]")%*'
     }
-    source ~/dotfiles/.zsh/.git-prompt.sh
+    source ~/dotfiles/git-completion/git-prompt.sh
     setopt prompt_subst # プロンプト内で変数を展開
     GIT_PS1_SHOWDIRTYSTATE=1 # 未ステージの変更があれば「*」 ステージ済の変更があれば「+」
     GIT_PS1_SHOWSTASHSTATE=1 # スラッシュが存在すれば「$」
@@ -47,7 +47,7 @@ if type git > /dev/null 2>&1; then
     GIT_PS1_SHOWCOLORHINTS=0 # DIRTYSTATEが有効な時，カラー表示
 
     # git系コマンドの補完
-    zstyle ':completion:*:*:git:*' script ~/dotfiles/.zsh/.git-completion.bash
+    zstyle ':completion:*:*:git:*' script ~/dotfiles/git-completion/git-completion.bash
     fpath=(~/dotfiles/.zsh $fpath)
 fi
 
