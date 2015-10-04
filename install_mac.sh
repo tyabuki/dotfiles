@@ -56,8 +56,8 @@ ln -siv ~/dotfiles/dot_emacs.d ~/.emacs.d
 
 # git
 if [ -f ~/.gitconfig ]; then
-    echo "exists '.gitconfig'. rename it to '.gitconfig.local'."
-    mv ~/.gitconfig ~/.gitconfig.local
+    echo "exists '.gitconfig'. rename it to '.gitconfig_local'."
+    mv ~/.gitconfig ~/.gitconfig_local
 fi
 ln -siv ~/dotfiles/dot_gitconfig ~/.gitconfig
 
