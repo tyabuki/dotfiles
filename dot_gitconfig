@@ -1,5 +1,5 @@
 [core]
-    editor = 'vim -c "set fenc=utf-8"'
+    editor = 'vim'
     precomposeunicode = true
     quotepath = false
 
@@ -14,6 +14,11 @@
 [push]
     # nothing, matching, upstream, simple(default), current
     default = upstream
+
+[pager]
+    diff = nkf -w | LESS=-RM LESSCHARSET=utf-8 less
+    log  = nkf -w | LESS=-RM LESSCHARSET=utf-8 less
+    show = nkf -w | LESS=-RM LESSCHARSET=utf-8 less
 
 [include]
     path = ~/.gitconfig_local
