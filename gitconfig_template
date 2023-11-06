@@ -2,6 +2,9 @@
   path = ~/.gitconfig_common
 
 [user]
-  name =
-  email =
-  #signingkey =
+  email = yabuuuuu@gmail.com
+  name = Toru YABUKI
+  signingkey = 28D32D1448F22A1F
+
+[commit]
+  gpgsign = true
