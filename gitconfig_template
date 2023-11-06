@@ -2,6 +2,6 @@
   path = ~/.gitconfig_common
 
 [user]
-	name = 
-	email = 
+  name =
+  email =
   #signingkey =
