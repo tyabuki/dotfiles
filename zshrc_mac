@@ -10,9 +10,11 @@ EDITOR=/usr/bin/nano
 #GIT_DUET_AUTHORS_FILE=~/.git-authors
 
 # homebrew
-PATH=/usr/local/bin:/usr/local/sbin:$PATH
-HOMEBREW_VERBOSE=1
-HOMEBREW_CURL_VERBOSE=1
+if type /opt/homebrew/bin/brew > /dev/null 2>&1; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  HOMEBREW_VERBOSE=1
+  HOMEBREW_CURL_VERBOSE=1
+fi
 
 # rancher desktop
 PATH=$HOME/.rd/bin:$PATH
