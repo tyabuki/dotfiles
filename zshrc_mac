@@ -37,10 +37,10 @@ fi
 #GIT_DUET_AUTHORS_FILE=~/.git-authors
 
 # rancher desktop
-PATH=$HOME/.rd/bin:$PATH
+[ -d "$HOME/.rd/bin" ] && PATH=$HOME/.rd/bin:$PATH
 
 ## mysql-client via homebrew
-PATH="/usr/local/opt/mysql-client/bin:$PATH"
+[ -d "/usr/local/opt/mysql-client/bin" ] && PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 # nodebrew
 #if type nodebrew > /dev/null 2>&1; then
@@ -48,10 +48,10 @@ PATH="/usr/local/opt/mysql-client/bin:$PATH"
 #fi
 
 # nvm - v0.39.0
-export NVM_DIR="$HOME/.nvm"
+[ -d "$HOME/.nvm" ] && export NVM_DIR="$HOME/.nvm"
+[ -d "$HOME/.nvm" ] && export NVM_SYMLINK_CURRENT=true
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-export NVM_SYMLINK_CURRENT=true
 
 # rbenv
 [[ -d ~/.rbenv  ]] && eval "$(rbenv init -)"
