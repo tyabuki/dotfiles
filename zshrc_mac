@@ -58,6 +58,11 @@ fi
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# goenv
+if type goenv > /dev/null 2>&1; then
+  eval "$(goenv init -)"
+fi
+
 # rbenv
 [[ -d ~/.rbenv  ]] && eval "$(rbenv init -)"
 
@@ -80,11 +85,11 @@ fi
 #   pyenv local fabric
 
 # Go lang via brew
-if [ -x "`which go`" ]; then
-  export PATH=$PATH:/usr/local/opt/go/libexec/bin
-  export GOPATH=$HOME/.go
-  export PATH=$PATH:$GOPATH/bin
-fi
+#if [ -x "`which go`" ]; then
+#  export PATH=$PATH:/usr/local/opt/go/libexec/bin
+#  export GOPATH=$HOME/.go
+#  export PATH=$PATH:$GOPATH/bin
+#fi
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="${HOME}/.sdkman"
