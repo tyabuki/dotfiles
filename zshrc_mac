@@ -42,6 +42,11 @@ fi
 ## mysql-client via homebrew
 [ -d "/usr/local/opt/mysql-client/bin" ] && PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
+# nodenv
+if type nodenv > /dev/null 2>&1; then
+  eval "$(nodenv init -)"
+fi
+
 # nodebrew
 #if type nodebrew > /dev/null 2>&1; then
 #   PATH=$HOME/.nodebrew/current/bin:$PATH
