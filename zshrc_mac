@@ -41,6 +41,7 @@ fi
 
 ## mysql-client via homebrew
 [ -d "/usr/local/opt/mysql-client/bin" ] && PATH="/usr/local/opt/mysql-client/bin:$PATH"
+[ -d "/opt/homebrew/opt/mysql-client/bin" ] && PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
 # nodenv
 if type nodenv > /dev/null 2>&1; then
