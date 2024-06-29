@@ -3,13 +3,14 @@
 EDITOR=/usr/bin/nano
 
 # for ARM and Rosetta
-# TODO: Rosetta上でnodenvやgoenvを使うならPATHを分けなければならない
-alias change_profile='(){echo -e "\033]1337;SetProfile=$1\a"}'
-alias arch_arm64="exec arch -arch arm64e /bin/zsh --login"
-alias arch_amd64="exec arch -arch x86_64 /bin/zsh --login"
 ARCH=$(uname -m)
-echo "### arch: $ARCH ###"
+echo "-----" && echo "### arch: $ARCH ###"
+alias change_profile='(){echo -e "\033]1337;SetProfile=$1\a"}'
 if [ $ARCH = "arm64" ]; then
+  # TODO: Rosetta上でnodenvやgoenvを使うならPATHを分けなければならない
+  abbrev-alias arch_arm64="exec arch -arch arm64e /bin/zsh --login"
+  abbrev-alias arch_amd64="exec arch -arch x86_64 /bin/zsh --login"
+  echo '-----' && abbrev-alias
   change_profile arm64
 fi
 
