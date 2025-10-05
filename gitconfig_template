@@ -2,9 +2,9 @@
   path = ~/.gitconfig_common
 
 [user]
-  email = yabuuuuu@gmail.com
-  name = Toru YABUKI
-  signingkey = 28D32D1448F22A1F
+  email = 7386418+tyabuki@users.noreply.github.com
+  name = tyabuki
+  signingkey = 7C0484F675D37739
 
 [commit]
   gpgsign = true
